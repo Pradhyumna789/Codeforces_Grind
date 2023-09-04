@@ -3,7 +3,7 @@
 #define endl '\n'
 using namespace std;
 
-bool is_prime(int num) // made a change
+bool is_prime(int num) 
 {
     for(int i = 2; i * i <= num; i++)
     {

@@ -4,49 +4,50 @@ using namespace std;
 
 int main()
 {
-    int size1, size2;
-    int d, result;
-
+    int size1;
     cin >> size1;
-    int arr1[size1];
-    
-    for(int i = 0; i < size1; i++)
+    vector<int> arr1(size1);
+
+    for(int i = 0; i < arr1.size(); i++)
     {
         cin >> arr1[i];
     }
 
+    int size2;
     cin >> size2;
-    int arr2[size2];
+    vector<int> arr2(size2);
 
-    for(int i = 0; i < size2; i++)
+    for(int i = 0; i < arr2.size(); i++)
     {
         cin >> arr2[i];
     }
 
+    int d;
     cin >> d;
-    int size;
 
-    if(size1 < size2)
-    {
-        size = size2 - size1;
-    }
+    int result = 0;
 
-    else
+    for(int i = 0; i < arr1.size(); i++)
     {
-        size = size1 - size2;
-    }
-
-    for(int i = 0; i < size; i++)
-    {
-        for(int j = 0; j < size; j++)
+        bool flag = false;
+        for(int j = 0; j < arr2.size(); j++)
         {
-            if(result <= d)
+            if(abs(arr1[i] - arr2[j]) <= d)
             {
-                result = abs(arr1[i] - arr2[j]);
+                flag = true;
+                break;
             }
         }
+
+        if(!flag)
+        {
+            result++;
+        }
+
     }
 
     cout << result << endl;
+
+    return 0;
 
 }

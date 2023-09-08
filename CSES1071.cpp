@@ -1,33 +1,51 @@
 #include<bits/stdc++.h>
-#define endl '\n'
+ 
 using namespace std;
-
-int main()
+#define ll long long int 
+ 
+void solve()
 {
-
-    const int max_y = 1e9 + 1;
-    const int max_x = 1e9 + 1;
-
-    int t;
-    cin >> t;
-
-    while(t--)
+    ll x,y;
+    cin>>x>>y;
+    ll ans;
+    if(x>y)
     {
-        int y, x;
-        cin >> y >> x;
-
-        for(int j = 0; j < max_y; j++)
+        if(x%2==0)
         {
-            for(int i = 0; i < max_x; i++)
-            {
-                if(j == y && i == x)
-                {
-                    cout << j << " " << i << endl;
-                }
-            }
+            ans=x*x;
+            ans-=(y-1);
         }
-
-    } 
-
+        else
+        {
+            ans=(x-1)*(x-1);
+            ans++;
+            ans+=(y-1);
+        }
+    }
+    else
+    {
+        if(y%2!=0)
+        {
+            ans=y*y;
+            ans-=(x-1);
+        }
+        else
+        {
+            ans=(y-1)*(y-1);
+            ans++;
+            ans+=(x-1);
+        }
+    }
+    cout<<ans<<endl;
+    return ;
+}
+ 
+int main() {
+    ios_base::sync_with_stdio(false);
+	cin.tie(nullptr);
+    int t=1;
+    cin>>t;
+    while(t--)
+    solve();
     return 0;
 }

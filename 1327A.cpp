@@ -12,14 +12,28 @@ int main()
         long long n, k;
         cin >> n >> k;
 
-        if ((k * k <= n) && (n % 2 == k % 2))
-        {
-            cout << "YES" << endl;
-        }
-        else
+        n -= k;
+
+        if(n % 2 == 1)
         {
             cout << "NO" << endl;
         }
+
+        else
+        {
+            n /= 2;
+            if(n < ((k * (k - 2)) / 2))
+            {
+                cout << "NO" << endl;
+            }
+
+            else
+            {
+                cout << "YES" << endl;
+            }
+        
+        }
+
     }
 
     return 0;

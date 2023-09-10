@@ -1,4 +1,4 @@
-// Solving using a map
+// Solving using an ordered map
 
 #include<bits/stdc++.h>
 #define endl '\n'
@@ -7,67 +7,66 @@ using namespace std;
 
 int main()
 {
-    string str;
-    cin >> str;
+    string s;
+    cin >> s;
 
-    map<char, ll> mp;
+    map<char, int> mp;
 
-    for(ll i = 0; i < str.size(); i++)
+    for(auto i: s)
     {
-        mp[str[i]]++;
+        mp[i]++;
     }
 
-    ll odd_count = 0;
-    char odd_char;
+    ll count = 0;
 
     for(auto it: mp)
     {
         if(it.second % 2 == 1)
         {
-            odd_count++;
-            odd_char = it.first;
+            count++;
         }
     }
 
-    if(odd_count > 1)
+    if(count > 1)
     {
         cout << "NO SOLUTION" << endl;
     }
 
-    else if(odd_count == 1 && str.size() % 2 == 0)
+    else if(count == 1 && s.size() % 2 == 0)
     {
         cout << "NO SOLUTION" << endl;
     }
 
     else
     {
+
         string left = "";
         string right = "";
+        ll odd_char_index = -1;
+        char odd_char;
 
         for(auto it: mp)
         {
-            string x(it.second/2, it.first);
+            if(it.second % 2 == 1)
+            {
+                odd_char = it.first;
+            }
 
-            left += x;
-            right += x;
+            string x(it.second / 2, it.first);
+            left = left + x;
+            right = x + right;
         }
 
-        reverse(right.begin(), right.end());
-
-        if(odd_count == 1)
+        if(count == 1)
         {
-            cout << left << odd_char << right << endl;
+            left += odd_char;
         }
 
-        else
-        {
-            cout << left << right << endl;
-        }
+        cout << left << right << endl;
 
-        }
+    }
 
     return 0;
-
 }
 
 

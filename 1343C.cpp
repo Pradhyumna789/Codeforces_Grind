@@ -3,40 +3,51 @@ using namespace std;
 #define ll long long  
 #define endl '\n'
 
+bool sgn(ll &x)
+{
+    return x > 0;
+}
+
 int main() 
 {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    auto sgn = [&](int x) {
-        if (x > 0) return 1;
-        else if (x < 0) return -1;
-        else return 0;
-    };
-
     int t;
     cin >> t;
 
-    while (t--) 
+    while(t--)
     {
-        int n;
-        cin >> n;
-        vector<int> a(n);
-        for (auto &it : a) cin >> it;
-        long long sum = 0;
-        for (int i = 0; i < n; ++i) 
+
+        ll size;
+        cin >> size;
+        vector<ll> a(size);
+
+        for(ll i = 0; i < size; i++)
         {
-            int cur = a[i];
-            int j = i;
-            while (j < n && sgn(cur) == sgn(a[j])) {
-                cur = max(cur, a[j]);
+            cin >> a[i];
+        }
+
+        ll sum = 0;
+
+        for(ll i = 0; i < size; i++)
+        {
+            ll j = i;
+            ll curr = a[i];
+
+            while(j < size && (sgn(a[i]) == sgn(a[j])))
+            {
+                curr = max(curr, a[j]);
                 j++;
             }
-            sum += cur;
+
+            sum += curr;
             i = j - 1;
+
         }
 
         cout << sum << endl;
+
     }
 
     return 0;

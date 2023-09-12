@@ -26,46 +26,28 @@ int main()
         }
     }
 
-    ll sum = 1;
+    vector<int> primes;
     ll count = 0;
-    bool flag = false;
 
-    ll prime_num_count = 0;
-
-    if(n == 3)
+    for(int i = 2; i <= n; i++)
     {
-        cout << "YES" << endl;
-    }
-
-    for(int i = 5; i <= n; i++)
-    {
-        ll j = i;
         if(prime[i])
         {
-            for(int j = 2; j <= i; i++)
-            {
-                if(prime[j])
-                {
-                    sum += i;
-                    count++;
-                }
-
-                if(count == 2)
-                {
-                    break;
-                }
-            }
-
-            if(sum == n)
-            {
-                prime_num_count++;
-            }
-
+            primes.push_back(i);
         }
-
     }
 
-    if(flag && count == k)
+    for(int i = 1; i < primes.size(); i++)
+    {
+        if(prime[primes[i] + primes[i - 1] + 1] && (primes[i] + primes[i - 1] <= n))
+        {
+            count++;
+        }
+    }
+
+    // cout << count << endl;
+
+    if(count >= k)
     {
         cout << "YES" << endl;
     }
@@ -74,6 +56,9 @@ int main()
     {
         cout << "NO" << endl;
     }
+    
 
     return 0;
 }
+
+ 

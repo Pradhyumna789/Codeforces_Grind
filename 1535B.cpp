@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 #define endl '\n'
 #define ll long long
+#define mod 1000000009; // -> mod = 10^9
 using namespace std;
 
 int main() {
@@ -11,13 +12,24 @@ int main() {
         ll n;
         cin >> n;
 
-        ll a[n];
+        vector<ll> a(n);
 
-        for(int i = 0; i < n; i++) {
-            cin >> a[i];
-        }
+        for(auto &i: a) cin >> i;
 
-        
+        sort(a.begin(), a.end()), [](ll x, ll y) {
+            return x % 2 < y % 2;
+        };
+
+        for(auto i: a) cout << i << " ";
+
+        // ll ans = 0;
+        // for(int i = 0; i < n; i++) {
+        //     for(int j = i + 1; j < n; j++) {
+        //         ans += __gcd(a[i], 2 * a[j]) > 1;
+        //     }
+        // }
+
+        // cout << ans << endl;
 
     }
 

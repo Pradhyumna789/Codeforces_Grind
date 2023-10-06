@@ -12,6 +12,7 @@ int main() {
     for (int i = 0; i < str.length(); i++) {
         if (isupper(str[i])) {
             upper_case_count++;
+
         } else if (islower(str[i])) {
             lower_case_count++;
         }
